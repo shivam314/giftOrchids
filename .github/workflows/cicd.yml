@@ -23,7 +23,7 @@ jobs:
       - name: Build docker image
         run: docker build -t shivam431/gift-orchids .
       - name: Publish image to docker hub
-        run: docker push gift-orchids:latest
+        run: docker push shivam431/gift-orchids:latest
 
   deploy:
     needs: build
