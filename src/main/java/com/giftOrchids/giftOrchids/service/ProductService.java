@@ -22,7 +22,8 @@ public class ProductService {
         return productRepo.findAll();
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(Product product, String url) {
+        product.setImage(url);
         productRepo.save(product);
     }
 
