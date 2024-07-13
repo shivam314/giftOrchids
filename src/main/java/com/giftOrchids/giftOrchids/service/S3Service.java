@@ -1,5 +1,6 @@
 package com.giftOrchids.giftOrchids.service;
 
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -24,9 +25,14 @@ public class S3Service {
     private String bucketName;
 
     public S3Service(@Value("${aws.region}") String region) {
+        ClientConfiguration clientConfig = new ClientConfiguration();
+        clientConfig.setConnectionTimeout(5000);
+        clientConfig.setRequestTimeout(5000);
+
         this.s3Client = AmazonS3ClientBuilder.standard()
                 .withRegion(region)
                 .withCredentials(new InstanceProfileCredentialsProvider(false))
+                .withClientConfiguration(clientConfig)
                 .build();
     }
 

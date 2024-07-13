@@ -24,7 +24,7 @@ public class ProductController {
     public S3Service s3Service;
 
     @GetMapping("/product")
-    public Optional<Product> getProduct(@RequestParam Integer pid) {
+    public Optional<Product> getProduct(@RequestParam("pid") Integer pid) {
         return productService.getProduct(pid);
     }
 
@@ -35,8 +35,8 @@ public class ProductController {
 
     @PostMapping(value = "/addProduct", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> addProducts(
-      @RequestBody Product product,
-      @RequestPart("file") MultipartFile file)
+      @ModelAttribute Product product,
+      @RequestPart(value="file", required = false) MultipartFile file)
     {
         try {
             String key = s3Service.uploadFile(file);

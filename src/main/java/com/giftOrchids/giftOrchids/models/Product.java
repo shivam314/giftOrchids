@@ -1,5 +1,6 @@
 package com.giftOrchids.giftOrchids.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -7,6 +8,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "product")
 public class Product {
     @Id
