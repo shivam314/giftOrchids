@@ -36,7 +36,7 @@ public class ProductController {
     @PostMapping(value = "/addProduct", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> addProducts(
       @RequestBody Product product,
-      @RequestParam("file") MultipartFile file)
+      @RequestPart("file") MultipartFile file)
     {
         try {
             String key = s3Service.uploadFile(file);
