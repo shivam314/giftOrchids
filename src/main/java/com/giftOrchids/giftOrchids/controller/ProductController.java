@@ -33,19 +33,26 @@ public class ProductController {
         return productService.getProducts();
     }
 
-    @PostMapping(value = "/addProduct", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> addProducts(
-      @ModelAttribute Product product,
-      @RequestPart(value="file", required = false) MultipartFile file)
-    {
-        try {
-            String key = s3Service.uploadFile(file);
-            String url = s3Service.getFileUrl(key).toString();
-            productService.addProduct(product, url);
-            return ResponseEntity.ok("Successfully Added data!");
-        } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error uploading file");
-        }
+    @PostMapping("/addProduct")
+    public void addProducts(
+        @RequestBody Product product
+    ) {
+        productService.addProduct(product);
     }
+
+//    @PostMapping(value = "/addProduct", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<String> addProducts(
+//      @ModelAttribute Product product,
+//      @RequestPart(value="file", required = false) MultipartFile file)
+//    {
+//        try {
+//            String key = s3Service.uploadFile(file);
+//            String url = s3Service.getFileUrl(key).toString();
+//            productService.addProduct(product, url);
+//            return ResponseEntity.ok("Successfully Added data!");
+//        } catch (IOException e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error uploading file");
+//        }
+//    }
 
 }
