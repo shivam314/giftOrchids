@@ -8,7 +8,6 @@ import lombok.Data;
 
 @Data
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "product")
 public class Product {
     @Id
