@@ -2,7 +2,7 @@ package com.giftOrchids.giftOrchids.controller;
 
 import com.giftOrchids.giftOrchids.models.Product;
 import com.giftOrchids.giftOrchids.service.ProductService;
-import com.giftOrchids.giftOrchids.service.S3Service;
+//import com.giftOrchids.giftOrchids.service.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,9 +19,9 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
-
-    @Autowired
-    public S3Service s3Service;
+//
+//    @Autowired
+//    public S3Service s3Service;
 
     @GetMapping("/product")
     public Optional<Product> getProduct(@RequestParam("pid") Integer pid) {
