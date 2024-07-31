@@ -1,4 +1,18 @@
 spring:
+  application:
+    name: giftOrchidsVault
+  cloud:
+    vault:
+      kv:
+        enabled: true
+      authentication: TOKEN
+      token: hvs.YoU9uXXxpNc4Di3W09qZ7ISg
+      scheme: http
+      host: 127.0.0.1
+      port: 8200
+  config:
+    import: vault://
+
   datasource:
     url: jdbc:postgresql://43.205.105.128:5432/postgres
     username: postgres
@@ -17,16 +31,6 @@ spring:
       file-size-threshold: 2MB
       max-file-size: 5MB
       max-request-size: 10MB
-
-cloud:
-  aws:
-    credentials:
-      access-key: ${{secrets.S3_ACCESS_KEY}}
-      secret-key: ${{secrets.S3_SECRET_KEY}}
-    region:
-      static: ap-south-1
-    stack:
-      auto: false
 
 application:
   bucket:
