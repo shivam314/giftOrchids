@@ -6,9 +6,9 @@ spring:
       kv:
         enabled: true
       authentication: TOKEN
-      token: hvs.YoU9uXXxpNc4Di3W09qZ7ISg
-      scheme: http
-      host: 127.0.0.1
+      token: hvs.LhrReJbLbMzz35c2JPcvFgkN
+      scheme: https
+      host: 43.205.105.128
       port: 8200
   config:
     import: vault://
